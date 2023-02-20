@@ -1,7 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebElement;
 
 import java.io.File;
 
@@ -18,20 +17,20 @@ public class FormTest {
 
 
     @Test
-    void normalResult(){
+    void studentRegistrationFormPositiveTest(){
         //Change variables here
-        String filename = "photo.jpg";
-        String name = "Gon";
-        String lastName = "Freecs";
-        String email = "email@test.com";
-        String gender = "Male";
-        String number = "1234567891";
-        String birthDMY[] = new String[]{"1", "January", "2000"};
-        String subject = "Maths";
-        String hobby = "Sports";
-        String address = "Avenue X 4202";
-        String state = "Haryana";
-        String city = "Panipat";
+        String filename = "photo.jpg",
+        name = "Gon",
+        lastName = "Freecs",
+        email = "email@test.com",
+        gender = "Male",
+        number = "1234567891",
+        birthDMY[] = new String[]{"1", "January", "2000"},
+        subject = "Maths",
+        hobby = "Sports",
+        address = "Avenue X 4202",
+        state = "Haryana",
+        city = "Panipat";
 
         //formatted birthday for validation
         String formattedDay = String.format("%02d", Integer.valueOf(birthDMY[0]));
