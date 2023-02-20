@@ -18,7 +18,7 @@ public class FormTest {
 
 
     @Test
-    void normalResult() throws InterruptedException {
+    void normalResult(){
         //Change variables here
         String filename = "photo.jpg";
         String name = "Gon";
