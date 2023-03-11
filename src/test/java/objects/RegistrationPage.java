@@ -12,12 +12,18 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
-    private SelenideElement
-            firstNameInput = $("#firstName"),
-            lastNameInput = $("#lastName"),
-            emailInput = $("#userEmail"),
-            numberInput = $x("//*[@id='userNumber']"),
-            calendarButton = $(byId("dateOfBirthInput"));
+    private final SelenideElement
+            firstNameLocator = $("#firstName"),
+            lastNameLocator = $("#lastName"),
+            emailLocator = $("#userEmail"),
+            mobileNumberLocator = $x("//*[@id='userNumber']"),
+            calendarButton = $(byId("dateOfBirthInput")),
+            subjectLocator = $("#subjectsInput"),
+            uploadLocator = $("#uploadPicture"),
+            addressLocator = $x("//*[@placeholder='Current Address']"),
+            stateLocator = $(byText("Select State")),
+            cityLocator = $(byText("Select City")),
+            submitButton = $("#submit");
 
     public RegistrationPage openPage() {
         Selenide.open("/automation-practice-form");
@@ -27,32 +33,39 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage removeBanners() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
+        return this;
+    }
+
     public RegistrationPage setFirstName(String name) {
-        firstNameInput.setValue(name);
+        firstNameLocator.setValue(name);
 
         return this;
     }
 
-    public RegistrationPage setLastName(String lastName) {
-        lastNameInput.setValue(lastName);
+    public RegistrationPage setLastNameLocator(String lastName) {
+        lastNameLocator.setValue(lastName);
 
         return this;
     }
 
-    public RegistrationPage setEmail(String email) {
-        emailInput.setValue(email);
+    public RegistrationPage setEmailLocator(String email) {
+        emailLocator.setValue(email);
 
         return this;
     }
 
     public RegistrationPage setGender(String gender) {
-        $("#genterWrapper").$(byText(gender)).click();
+        $(byText(gender)).click();
 
         return this;
     }
 
-    public RegistrationPage setNumber(String number) {
-        numberInput.setValue(number);
+    public RegistrationPage setMobileNumberLocator(String mobileNumber) {
+        mobileNumberLocator.setValue(mobileNumber);
 
         return this;
     }
@@ -65,7 +78,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setSubject(String subject) {
-        $("#subjectsInput").setValue(subject).pressEnter();
+        subjectLocator.setValue(subject).pressEnter();
 
         return this;
     }
@@ -78,33 +91,33 @@ public class RegistrationPage {
 
     public RegistrationPage setPicture(String filename) {
         File photo = new File("src/test/resources/images/" + filename);
-        $("#uploadPicture").uploadFile(photo);
+        uploadLocator.uploadFile(photo);
 
         return this;
     }
 
     public RegistrationPage setAddress(String address) {
-        $x("//*[@placeholder='Current Address']").setValue(address);
+        addressLocator.setValue(address);
 
         return this;
     }
 
     public RegistrationPage setState(String state) {
-        $(byText("Select State")).click();
+        stateLocator.click();
         $(byText(state)).click();
 
         return this;
     }
 
     public RegistrationPage setCity(String city) {
-        $(byText("Select City")).click();
+        cityLocator.click();
         $(byText(city)).click();
 
         return this;
     }
 
     public void submitForm() {
-        $("#submit").click();
+        submitButton.click();
     }
 
     public String formatBirthdayForValidation(String[] birthDMY) {
@@ -119,9 +132,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage confirmResultsContent(String key, String value) {
+    public RegistrationPage confirmResultsContent(String locatorText, String inputtedText) {
 
-        RegistrationResultsModal.verifyModalContents(key, value);
+        RegistrationResultsModal.verifyModalContents(locatorText, inputtedText);
 
         return this;
     }

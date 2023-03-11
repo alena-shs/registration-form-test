@@ -1,8 +1,10 @@
 package tests;
 
+import objects.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
 public class FormTest extends TestBase {
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void studentRegistrationFormPositiveTest() {
@@ -12,7 +14,7 @@ public class FormTest extends TestBase {
         String lastName = "Freecss";
         String email = "email@test.com";
         String gender = "Male";
-        String number = "1234567891";
+        String mobileNumber = "1234567891";
         String[] birthDMY = new String[]{"1", "January", "2000"};
         String subject = "Maths";
         String hobby = "Sports";
@@ -24,11 +26,12 @@ public class FormTest extends TestBase {
 
         registrationPage
                 .openPage()
+                .removeBanners()
                 .setFirstName(name)
-                .setLastName(lastName)
-                .setEmail(email)
+                .setLastNameLocator(lastName)
+                .setEmailLocator(email)
                 .setGender(gender)
-                .setNumber(number)
+                .setMobileNumberLocator(mobileNumber)
                 .setBirthDate(birthDMY)
                 .setSubject(subject)
                 .setHobby(hobby)
@@ -42,7 +45,7 @@ public class FormTest extends TestBase {
                 .confirmResultsContent("Student Name", (name+" "+lastName))
                 .confirmResultsContent("Student Email", email)
                 .confirmResultsContent("Gender", gender)
-                .confirmResultsContent("Mobile", number)
+                .confirmResultsContent("Mobile", mobileNumber)
                 .confirmResultsContent("Date of Birth", registrationPage.formatBirthdayForValidation(birthDMY))
                 .confirmResultsContent("Subjects", subject)
                 .confirmResultsContent("Hobbies", hobby)
