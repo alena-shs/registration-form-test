@@ -27,8 +27,6 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         Selenide.open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
 
         return this;
     }
