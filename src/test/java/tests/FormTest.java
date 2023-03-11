@@ -9,20 +9,18 @@ public class FormTest extends TestBase {
     @Test
     void studentRegistrationFormPositiveTest() {
         //Change variables here
-        String filename = "photo.jpg";
-        String name = "Gon";
-        String lastName = "Freecss";
-        String email = "email@test.com";
-        String gender = "Male";
-        String mobileNumber = "1234567891";
+        String filename = "photo.jpg",
+                name = "Gon",
+                lastName = "Freecss",
+                email = "email@test.com",
+                gender = "Male",
+                mobileNumber = "1234567891",
+                subject = "Maths",
+                hobby = "Sports",
+                address = "Avenue X 4202",
+                state = "Haryana",
+                city = "Panipat";
         String[] birthDMY = new String[]{"1", "January", "2000"};
-        String subject = "Maths";
-        String hobby = "Sports";
-        String address = "Avenue X 4202";
-        String state = "Haryana";
-        String city = "Panipat";
-
-        //formatted birthday for validation
 
         registrationPage
                 .openPage()
