@@ -6,11 +6,6 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class RegistrationResultsModal {
-    public static String transformBirthdayForValidation(String[] birthDMY) {
-        String formattedDay = String.format("%02d", Integer.valueOf(birthDMY[0]));
-
-        return formattedDay + " " + birthDMY[1] + "," + birthDMY[2];
-    }
 
     public static void verifyModalAppears(){
         $(".modal-dialog").should(appear);

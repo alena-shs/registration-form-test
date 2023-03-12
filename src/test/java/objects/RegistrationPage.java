@@ -44,33 +44,33 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setLastNameLocator(String lastName) {
+    public RegistrationPage setLastName(String lastName) {
         lastNameLocator.setValue(lastName);
 
         return this;
     }
 
-    public RegistrationPage setEmailLocator(String email) {
+    public RegistrationPage setEmail(String email) {
         emailLocator.setValue(email);
 
         return this;
     }
 
     public RegistrationPage setGender(String gender) {
-        $(byText(gender)).click();
+        $("#genterWrapper").$(byText(gender)).click();
 
         return this;
     }
 
-    public RegistrationPage setMobileNumberLocator(String mobileNumber) {
+    public RegistrationPage setMobileNumber(String mobileNumber) {
         mobileNumberLocator.setValue(mobileNumber);
 
         return this;
     }
 
-    public RegistrationPage setBirthDate(String[] birthDMY) {
+    public RegistrationPage setBirthDate(int birthDay, String birthMonth, String birthYear) {
         calendarButton.click();
-        CalendarComponent.setDate(birthDMY);
+        CalendarComponent.setDate(birthDay, birthMonth, birthYear);
 
         return this;
     }
@@ -82,7 +82,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setHobby(String hobby) {
-        $(byText(hobby)).click();
+        $("#hobbiesWrapper").$(byText(hobby)).click();
 
         return this;
     }
@@ -116,11 +116,6 @@ public class RegistrationPage {
 
     public void submitForm() {
         submitButton.click();
-    }
-
-    public String formatBirthdayForValidation(String[] birthDMY) {
-
-        return RegistrationResultsModal.transformBirthdayForValidation(birthDMY);
     }
 
 
