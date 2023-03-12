@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.text.DecimalFormat;
 
-public class FormTest extends TestBase {
+public class FormTestWithPageObjects extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
