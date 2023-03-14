@@ -11,7 +11,10 @@ public class TestData {
     static Faker faker = new Faker(new Locale("de"));
     public static String[]
             genders = {"Female", "Male", "Other"},
-            subjects = {"Accounting", "Arts", "Biology", "Chemistry", "Civics", "Computer Science", "Commerce", "English", "Hindi", "Maths", "Physics", "Social Studies"},
+            months = {"January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"},
+            subjects = {"Accounting", "Arts", "Biology", "Chemistry", "Civics", "Computer Science",
+                    "Commerce", "English", "Hindi", "Maths", "Physics", "Social Studies"},
             hobbies = {"Sports", "Reading", "Music"},
             cities = {"Panipat", "Karnal"};
 
@@ -21,7 +24,7 @@ public class TestData {
             email = faker.internet().emailAddress(),
             gender = getRandomItemFromArray(genders),
             mobileNumber = String.valueOf(getRandomLargeNumber(1000000000, 9999999999L)),
-            birthMonth = "January",
+            birthMonth = getRandomItemFromArray(months),
             birthYear = String.valueOf(getRandomInt(1900, 2100)),
             hobby = getRandomItemFromArray(hobbies),
             subject = getRandomItemFromArray(subjects),
