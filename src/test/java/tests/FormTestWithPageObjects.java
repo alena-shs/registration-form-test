@@ -45,8 +45,9 @@ public class FormTestWithPageObjects extends TestBase {
                 .setCity(city)
                 .submitForm();
 
-        registrationResultsModal.verifyModalAppears();
-        registrationResultsModal.verifyModalContents("Student Name", (name + " " + lastName))
+        registrationResultsModal
+                .verifyModalAppears()
+                .verifyModalContents("Student Name", (name + " " + lastName))
                 .verifyModalContents("Student Email", email)
                 .verifyModalContents("Gender", gender)
                 .verifyModalContents("Mobile", mobileNumber)

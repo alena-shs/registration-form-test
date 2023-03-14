@@ -7,10 +7,12 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class RegistrationResultsModal {
 
-    public static void verifyModalAppears(){
+    public RegistrationResultsModal verifyModalAppears(){
         $(".modal-dialog").should(appear);
         $(".modal-header")
                 .shouldHave(text("Thanks for submitting the form"));
+
+        return this;
     }
 
     public RegistrationResultsModal verifyModalContents(String locatorText, String inputtedText) {
