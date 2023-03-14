@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.text.DecimalFormat;
 
+import static tests.TestData.*;
+
 public class FormTestWithPageObjects extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
@@ -13,20 +15,7 @@ public class FormTestWithPageObjects extends TestBase {
     @Test
     void studentRegistrationFormPositiveTest() {
         //Change variables here
-        String filename = "photo.jpg",
-                name = "Gon",
-                lastName = "Freecss",
-                email = "email@test.com",
-                gender = "Male",
-                mobileNumber = "1234567891",
-                birthMonth = "January",
-                birthYear = "2000",
-                subject = "Maths",
-                hobby = "Sports",
-                address = "Avenue X 4202",
-                state = "Haryana",
-                city = "Panipat";
-        int birthDay = 1;
+
 
         registrationPage
                 .openPage()
