@@ -13,10 +13,11 @@ public class RegistrationResultsModal {
                 .shouldHave(text("Thanks for submitting the form"));
     }
 
-    public static void verifyModalContents(String locatorText, String inputtedText) {
+    public RegistrationResultsModal verifyModalContents(String locatorText, String inputtedText) {
             $(".table-responsive").$(byText(locatorText)).parent()
                     .shouldHave(text(inputtedText));
-    }
 
+            return this;
+    }
 
 }

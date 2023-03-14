@@ -1,12 +1,14 @@
 package tests;
 
 import objects.RegistrationPage;
+import objects.components.RegistrationResultsModal;
 import org.junit.jupiter.api.Test;
 
 import java.text.DecimalFormat;
 
 public class FormTestWithPageObjects extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
+    RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
 
     @Test
     void studentRegistrationFormPositiveTest() {
@@ -43,16 +45,16 @@ public class FormTestWithPageObjects extends TestBase {
                 .setCity(city)
                 .submitForm();
 
-        registrationPage.confirmResultsAppears();
-        registrationPage.confirmResultsContent("Student Name", (name + " " + lastName))
-                .confirmResultsContent("Student Email", email)
-                .confirmResultsContent("Gender", gender)
-                .confirmResultsContent("Mobile", mobileNumber)
-                .confirmResultsContent("Date of Birth", ((new DecimalFormat("00").format(birthDay)) + " " + birthMonth + "," + birthYear))
-                .confirmResultsContent("Subjects", subject)
-                .confirmResultsContent("Hobbies", hobby)
-                .confirmResultsContent("Picture", filename)
-                .confirmResultsContent("Address", address)
-                .confirmResultsContent("State and City", (state + " " + city));
+        registrationResultsModal.verifyModalAppears();
+        registrationResultsModal.verifyModalContents("Student Name", (name + " " + lastName))
+                .verifyModalContents("Student Email", email)
+                .verifyModalContents("Gender", gender)
+                .verifyModalContents("Mobile", mobileNumber)
+                .verifyModalContents("Date of Birth", ((new DecimalFormat("00").format(birthDay)) + " " + birthMonth + "," + birthYear))
+                .verifyModalContents("Subjects", subject)
+                .verifyModalContents("Hobbies", hobby)
+                .verifyModalContents("Picture", filename)
+                .verifyModalContents("Address", address)
+                .verifyModalContents("State and City", (state + " " + city));
     }
 }

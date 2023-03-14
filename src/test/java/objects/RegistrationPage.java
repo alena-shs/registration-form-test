@@ -3,7 +3,6 @@ package objects;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import objects.components.CalendarComponent;
-import objects.components.RegistrationResultsModal;
 
 import java.io.File;
 
@@ -16,9 +15,11 @@ public class RegistrationPage {
             firstNameLocator = $("#firstName"),
             lastNameLocator = $("#lastName"),
             emailLocator = $("#userEmail"),
+            genderLocator = $("#genterWrapper"),
             mobileNumberLocator = $x("//*[@id='userNumber']"),
             calendarButton = $(byId("dateOfBirthInput")),
             subjectLocator = $("#subjectsInput"),
+            hobbiesLocator = $("#hobbiesWrapper"),
             uploadLocator = $("#uploadPicture"),
             addressLocator = $x("//*[@placeholder='Current Address']"),
             stateLocator = $(byText("Select State")),
@@ -57,7 +58,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setGender(String gender) {
-        $("#genterWrapper").$(byText(gender)).click();
+        genderLocator.$(byText(gender)).click();
 
         return this;
     }
@@ -70,7 +71,7 @@ public class RegistrationPage {
 
     public RegistrationPage setBirthDate(int birthDay, String birthMonth, String birthYear) {
         calendarButton.click();
-        CalendarComponent.setDate(birthDay, birthMonth, birthYear);
+        CalendarComponent.setDate(Integer.toString(birthDay), birthMonth, birthYear);
 
         return this;
     }
@@ -82,7 +83,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setHobby(String hobby) {
-        $("#hobbiesWrapper").$(byText(hobby)).click();
+        hobbiesLocator.$(byText(hobby)).click();
 
         return this;
     }
@@ -117,20 +118,5 @@ public class RegistrationPage {
     public void submitForm() {
         submitButton.click();
     }
-
-
-    public RegistrationPage confirmResultsAppears() {
-        RegistrationResultsModal.verifyModalAppears();
-
-        return this;
-    }
-
-    public RegistrationPage confirmResultsContent(String locatorText, String inputtedText) {
-
-        RegistrationResultsModal.verifyModalContents(locatorText, inputtedText);
-
-        return this;
-    }
-
 
 }
