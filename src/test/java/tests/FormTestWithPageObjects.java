@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.text.DecimalFormat;
 
-import static tests.TestData.*;
-
 public class FormTestWithPageObjects extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
