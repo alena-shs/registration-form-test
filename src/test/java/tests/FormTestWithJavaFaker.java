@@ -2,12 +2,17 @@ package tests;
 
 import objects.RegistrationPage;
 import objects.components.RegistrationResultsModal;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import java.text.DecimalFormat;
 
 import static tests.TestData.*;
 
+@Tags({
+        @Tag("JavaFaker"),
+        @Tag("simple")})
 public class FormTestWithJavaFaker extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();

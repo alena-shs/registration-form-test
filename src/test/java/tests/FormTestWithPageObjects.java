@@ -2,10 +2,15 @@ package tests;
 
 import objects.RegistrationPage;
 import objects.components.RegistrationResultsModal;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import java.text.DecimalFormat;
 
+@Tags({
+        @Tag("Pre-inserted data"),
+        @Tag("simple")})
 public class FormTestWithPageObjects extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
