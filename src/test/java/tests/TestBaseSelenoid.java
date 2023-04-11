@@ -16,8 +16,15 @@ public class TestBaseSelenoid {
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = "chrome";
-        Configuration.browserVersion = "100.0";
+
+        String browserName = System.getProperty("browser", "firefox");
+        System.out.println(browserName);
+        Configuration.browser =  browserName;
+
+        String browserVersion = System.getProperty("browser_version", "97.0");
+        System.out.println(browserVersion);
+        Configuration.browserVersion = browserVersion;
+
         Configuration.browserSize = "1920x1080";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 

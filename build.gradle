@@ -39,9 +39,18 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
+
 
 task registration_test(type: Test) {
     useJUnitPlatform {
@@ -52,5 +61,11 @@ task registration_test(type: Test) {
 task remote_test(type: Test) {
     useJUnitPlatform {
         includeTags("Remote")
+    }
+}
+
+task many_properties_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("many_properties")
     }
 }
